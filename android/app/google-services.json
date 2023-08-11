@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "869481097232",
+    "project_id": "taxi-booking-c03ee",
+    "storage_bucket": "taxi-booking-c03ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869481097232:android:4e1af7da06823c6c0b8295",
+        "android_client_info": {
+          "package_name": "com.example.sterling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869481097232-j7k4gqdo89fa02iebfmqshbr6ep7cjmp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sterling",
+            "certificate_hash": "22308185746441724372c44d8be5238cb99db091"
+          }
+        },
+        {
+          "client_id": "869481097232-ia6jntm6ahocen1av5hn9c4i1g82i9ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_amlH_ZoxxNn13plIOLz6R_T9jODiVgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869481097232-ia6jntm6ahocen1av5hn9c4i1g82i9ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869481097232:android:27c908244b61862f0b8295",
+        "android_client_info": {
+          "package_name": "com.sterling.taxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869481097232-ia6jntm6ahocen1av5hn9c4i1g82i9ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_amlH_ZoxxNn13plIOLz6R_T9jODiVgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869481097232-ia6jntm6ahocen1av5hn9c4i1g82i9ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
