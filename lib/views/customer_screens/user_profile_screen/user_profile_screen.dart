@@ -1,18 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sterling/services/services.dart';
 import 'package:sterling/view_models/user_view.dart';
 import 'package:sterling/views/common_screens/update_email_screen/update_email_screen.dart';
 import 'package:sterling/views/common_screens/update_phone_number/update_phone_number.dart';
 import 'package:sterling/views/global_utils/back_button.dart';
+import 'package:sterling/views/global_utils/delete_user_dialog.dart';
 
+import '../../common_screens/login_screen/login_screen.dart';
 import '../../global_utils/logout_alert.dart';
 
 class UserProfileScreen extends StatefulWidget {
   UserProfileScreen(this.cancelTimer,
       // this.user,
       {super.key});
-      
+
   // final User user;
   var cancelTimer;
   @override
@@ -222,6 +227,45 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           Text(
                             'Logout',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (ctx) {
+                            return DeleteUserAlert(user, widget.cancelTimer);
+                          });
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 250,
+                      color: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.delete,
+                            size: 30,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Delete Account',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Theme.of(context).primaryColor,

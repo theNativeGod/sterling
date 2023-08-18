@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sterling/models/company.dart';
 import 'package:sterling/views/common_screens/enter_code_screen/utils/export.dart';
 import 'package:sterling/views/common_screens/registration_success_screen/reg_success_screen.dart';
 import 'package:sterling/views/common_screens/signup_screen/signup_screen.dart';
@@ -34,7 +35,7 @@ class OTPForm extends StatefulWidget {
   final String? name;
   final String? mobile;
   final String? email;
-  final String? company;
+  final Company? company;
   final String? employeeId;
 
   @override
@@ -143,7 +144,7 @@ class _OTPFormState extends State<OTPForm> {
       widget.name,
       widget.email,
       widget.mobile,
-      widget.company,
+      widget.company!.id,
       widget.employeeId,
       widget.countryCode,
     );

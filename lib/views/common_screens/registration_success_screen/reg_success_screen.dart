@@ -51,14 +51,14 @@ class RegSuccessScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                textAlign: TextAlign.center,
-                'Please verify your email',
-                style: TextStyle(
-                  color: Color(0xff585858),
-                  fontSize: 18,
-                ),
-              ),
+              // const Text(
+              //   textAlign: TextAlign.center,
+              //   'Please verify your email',
+              //   style: TextStyle(
+              //     color: Color(0xff585858),
+              //     fontSize: 18,
+              //   ),
+              // ),
               const SizedBox(height: 80),
               ThemeButton(
                 buttonText: 'Back to login',

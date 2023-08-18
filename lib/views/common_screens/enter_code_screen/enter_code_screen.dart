@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../models/company.dart';
 import 'utils/export.dart';
 import '../../global_utils/global_export.dart';
 
@@ -20,7 +21,7 @@ class EnterCodeScreen extends StatelessWidget {
   final String? name;
   final String? mobile;
   final String? email;
-  final String? company;
+  final Company? company;
   final String? employeeId;
 
   @override

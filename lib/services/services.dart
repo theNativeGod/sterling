@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sterling/models/company.dart';
 
 class Services {
   Dio dio = Dio();
@@ -8,16 +10,30 @@ class Services {
   List<String> vehicleType = [];
   List<String> rideCategory = [];
   getCompanyList() async {
-    List<String> compList = [];
+    List<Company> compList = [];
     response = await dio.post(
       'http://dev.labgex.com/sterling/backend/api/trip/settings',
     );
 
+    print(response.data);
+
+    // response.data['companies'].map((e) {
+    //   compList.add(
+    //     e['company_name'],
+    //   );
+    // }).toList();
+    // return compList;
+
     response.data['companies'].map((e) {
       compList.add(
-        e['company_name'],
+        Company(
+          id: e['id'],
+          name: e['company_name'],
+          status: e['status'],
+        ),
       );
     }).toList();
+
     return compList;
   }
 
@@ -30,8 +46,6 @@ class Services {
           "mobile": "91${phoneNumber}",
         },
       );
-
-      print(response.data);
 
       final message = response.data['message'];
       if (message == 'Mobile already exists.') {
@@ -51,7 +65,7 @@ class Services {
     String? name,
     String? email,
     String? mobile,
-    String? company,
+    int company,
     String? employeeId,
     String? counryCode,
   ) async {
@@ -358,5 +372,33 @@ class Services {
     } catch (e) {
       print(e);
     }
+  }
+
+  deleteUser(userId, context) async {
+    response = await dio.post(
+        'http://dev.labgex.com/sterling/backend/api/user/profiledelete',
+        data: {
+          'user_id': userId,
+        });
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 2),
+        elevation: 6,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+        content: Center(
+          child: Text(
+            response.data['message'].toString(),
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

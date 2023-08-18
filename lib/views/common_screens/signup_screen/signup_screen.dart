@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:sterling/views/common_screens/login_screen/login_screen.dart';
+import '../../../models/company.dart';
 import '../../../services/services.dart';
 import '../../global_utils/small_logo.dart';
 import '../../global_utils/theme_button.dart';
@@ -27,7 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool isLoading = false;
 
   bool isInit = true;
-  List<String> compList = [];
+  List<Company> compList = [];
   List<DropdownMenuItem> compItemList = [];
   int selectedValue = 0;
 
@@ -35,12 +36,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
   getCompList() async {
     compList = await services.getCompanyList();
+    print(compList);
+
     for (int i = 0; i < compList.length; i++) {
       compItemList.add(
         DropdownMenuItem(
           value: i,
           child: Text(
-            compList[i],
+            compList[i].name,
             style: TextStyle(
               color: Colors.grey.shade600,
             ),
@@ -48,18 +51,6 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       );
     }
-    // compItemList.insert(
-    //   0,
-    //   DropdownMenuItem(
-    //     value: 50,
-    //     child: Text(
-    //       'None',
-    //       style: TextStyle(
-    //         color: Colors.grey.shade600,
-    //       ),
-    //     ),
-    //   ),
-    // );
 
     setState(() {});
   }
