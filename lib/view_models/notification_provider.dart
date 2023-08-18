@@ -14,21 +14,27 @@ class NotificationsProvider with ChangeNotifier {
   set page(value) => _pageNo = value;
 
   fetchAndSetNotifications(userId) async {
-    _userId = userId;
-    List<NotificationModel> notifics = [];
-    var responseData = await services.getNotifications(userId, _pageNo);
-    var notificationsData = responseData['notifications'];
-    print('here is data');
-    print(notificationsData);
-    notificationsData.forEach((notification) {
-      notifics.add(
-        NotificationModel(
-            id: notification['id'], notification: notification['content']),
-      );
-    });
-    _notifications.addAll(notifics);
+    try {
+      _userId = userId;
+      List<NotificationModel> notifics = [];
+      var responseData = await services.getNotifications(userId, _pageNo);
+      var notificationsData = responseData['notifications'];
 
-    notifyListeners();
+      if (notificationsData != null) {
+        print(notificationsData);
+        notificationsData.forEach((notification) {
+          notifics.add(
+            NotificationModel(
+                id: notification['id'], notification: notification['content']),
+          );
+        });
+        _notifications.addAll(notifics);
+      }
+
+      notifyListeners();
+    } catch (e) {
+      print('error in notification provider');
+    }
   }
 
   loadMore(context) async {
